@@ -9,4 +9,13 @@ data class PostDto(
     val writer: String,
     val createdAt: LocalDateTime,
     val updatedAt: LocalDateTime,
-)
+) {
+//    fun toPostDto(postEntity: PostEntity.Post): PostDto {
+//        return PostDto(
+//            id = postEntity.id,
+//            title = postEntity.title,
+//            writer = postEntity.writer,
+//            content = postEntity.content,
+//        )
+//    }f
+}

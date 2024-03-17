@@ -4,6 +4,7 @@ import com.canbe.board.dto.PostDto
 import com.canbe.board.service.PostService
 import com.canbe.board.util.ApiVersion
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
@@ -12,8 +13,16 @@ import org.springframework.web.bind.annotation.RestController
 class PostExposedController(
     val postService: PostService,
 ) {
-    @GetMapping("/api/v1/posts")
+    @GetMapping("/posts")
     fun getPosts(): List<PostDto>? {
-        return postService.getBoards()
+        return postService.getPosts()
     }
+
+    @GetMapping("/posts/{postId}")
+    fun getPostById(
+        @PathVariable(name = "postId") postId: Int,
+    ): PostDto? {
+        return postService.getPostById(postId = postId)
+    }
+
 }

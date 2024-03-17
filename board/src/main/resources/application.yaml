@@ -1,11 +1,27 @@
+server:
+  port: 8090
 spring:
   application:
     name: board
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost/post?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
+    url: jdbc:mysql://localhost/side-project?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
     username: root
     password: 1234
+    hikari:
+      connection-timeout: 3000
+      validation-timeout: 3000
+      minimum-idle: 5
+      max-lifetime: 240000
+      maximum-pool-size: 20
+  exposed:
+    show-sql: true
 
-
+#maximum-pool-size: 최대 pool size (defailt 10)
+#connection-timeout: 커넥션의 타임아웃
+#validation-timeout: 유효한 타임아웃
+#minimum-idle: 연결 풀에서 HikariCP가 유지 관리하는 최소 유휴 연결 수
+#idle-timeout: 연결을 위한 최대 유휴 시간
+#max-lifetime: 닫힌 후 pool 에있는 connection의 최대 수명 (ms)입니다.
+#auto-commit: auto commit 여부 (default true)
 
