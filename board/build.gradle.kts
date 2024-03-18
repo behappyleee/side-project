@@ -29,6 +29,8 @@ dependencies {
     // TODO - exposed 우선 구현 추후 JPA 로 변경 하여 구현 하기 !
     // Exposed ORM 사용하는데 필요 Library
     implementation("org.jetbrains.exposed:exposed-spring-boot-starter:$exposedVersion")
+    implementation("org.jetbrains.exposed:exposed-kotlin-datetime:$exposedVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1")
 
     runtimeOnly("com.mysql:mysql-connector-j")
     testImplementation("org.springframework.boot:spring-boot-starter-test")

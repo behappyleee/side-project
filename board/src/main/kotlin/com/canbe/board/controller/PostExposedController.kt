@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping(ApiVersion.FIRST_VERSION_API_PATH)
 class PostExposedController(
-    val postService: PostService,
+    private val postService: PostService,
 ) {
     @GetMapping("/posts")
-    fun getPosts(): List<PostDto>? {
+    fun getPosts(): List<PostDto> {
         return postService.getPosts()
     }
 

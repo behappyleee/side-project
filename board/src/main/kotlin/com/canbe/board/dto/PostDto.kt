@@ -1,6 +1,8 @@
 package com.canbe.board.dto
 
-import kotlinx.datetime.LocalDateTime
+import com.canbe.board.entity.PostEntity
+import kotlinx.datetime.toJavaLocalDateTime
+import java.time.LocalDateTime
 
 data class PostDto(
     val id: Int,
@@ -10,12 +12,17 @@ data class PostDto(
     val createdAt: LocalDateTime,
     val updatedAt: LocalDateTime,
 ) {
-//    fun toPostDto(postEntity: PostEntity.Post): PostDto {
-//        return PostDto(
-//            id = postEntity.id,
-//            title = postEntity.title,
-//            writer = postEntity.writer,
-//            content = postEntity.content,
-//        )
-//    }f
+    companion object {
+        fun postEntityToPostDto(post: PostEntity.Post): PostDto {
+            return PostDto(
+                id = post.postId,
+                title = post.title,
+                writer = post.writer,
+                content = post.content,
+                // TODO - 왜 kotlinx 는 안될까 ... ?! 고민이 필요 !
+                createdAt = post.createdAt.toJavaLocalDateTime(),
+                updatedAt = post.updatedAt.toJavaLocalDateTime(),
+            )
+        }
+    }
 }
