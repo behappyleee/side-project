@@ -3,36 +3,36 @@ package com.canbe.board.service
 import com.canbe.board.dto.CreatePostDto
 import com.canbe.board.dto.PostDto
 import com.canbe.board.dto.UpdatePostDto
-import com.canbe.board.repository.PostRepository
+import com.canbe.board.repository.PostExposedRepository
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 
 @Service
 class PostService(
-    private val postRepository: PostRepository,
+    private val postExposedRepository: PostExposedRepository,
 ) {
     fun createPosts(posts: List<CreatePostDto>) {
-        postRepository.createPosts(posts = posts)
+        postExposedRepository.createPosts(posts = posts)
     }
 
     fun getPosts(): List<PostDto> {
-        return postRepository.findAllPosts()
+        return postExposedRepository.findAllPosts()
     }
 
     // TODO - 내부 로직 구현 하기 .... !
     fun getPostById(postId: Int): PostDto {
-        return postRepository.findByPostId(postId = postId)
+        return postExposedRepository.findByPostId(postId = postId)
     }
 
     fun updatePostByPostId(
         postId: Int,
         postDto: UpdatePostDto,
     ) {
-        postRepository.updatePostByPostId(postId = postId, post = postDto)
+        postExposedRepository.updatePostByPostId(postId = postId, post = postDto)
     }
 
     fun deletePostByPostId(postId: Int) {
-        postRepository.deletePostByPostId(postId = postId)
+        postExposedRepository.deletePostByPostId(postId = postId)
     }
 
     companion object {

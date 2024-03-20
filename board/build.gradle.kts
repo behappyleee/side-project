@@ -32,6 +32,9 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-kotlin-datetime:$exposedVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1")
 
+    // JPA 사용하는데 필요한 Library
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+
     runtimeOnly("com.mysql:mysql-connector-j")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }

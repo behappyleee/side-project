@@ -16,8 +16,7 @@ import org.springframework.transaction.annotation.Transactional
 
 @Repository
 @Transactional
-class PostRepository {
-
+class PostExposedRepository {
     fun createPosts(posts: List<CreatePostDto>) {
         posts.forEach { post ->
             PostEntity.Posts.insert {
@@ -69,7 +68,7 @@ class PostRepository {
     }
 
     companion object {
-        private val logger = LoggerFactory.getLogger(PostRepository::class.java)
+        private val logger = LoggerFactory.getLogger(PostExposedRepository::class.java)
     }
 
 }
