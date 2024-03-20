@@ -10,7 +10,6 @@ import org.jetbrains.exposed.sql.kotlin.datetime.CurrentDateTime
 import org.jetbrains.exposed.sql.kotlin.datetime.datetime
 
 object PostEntity {
-
     // TODO - Study 필요 Entity 와 Class 가 내부 적으로 어떻게 동작 하는 지 ... Study 가 필요 ... !
     object Posts : IntIdTable(name = "post") {
         val title: Column<String> = varchar(name = "title", length = 50)

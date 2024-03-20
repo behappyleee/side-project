@@ -1,5 +1,6 @@
 package com.canbe.board.service
 
+import com.canbe.board.dto.CreatePostDto
 import com.canbe.board.dto.PostDto
 import com.canbe.board.dto.UpdatePostDto
 import com.canbe.board.repository.PostRepository
@@ -8,8 +9,12 @@ import org.springframework.stereotype.Service
 
 @Service
 class PostService(
-    val postRepository: PostRepository,
+    private val postRepository: PostRepository,
 ) {
+    fun createPosts(posts: List<CreatePostDto>) {
+        postRepository.createPosts(posts = posts)
+    }
+
     fun getPosts(): List<PostDto> {
         return postRepository.findAllPosts()
     }

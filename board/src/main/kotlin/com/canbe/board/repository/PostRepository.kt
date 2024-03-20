@@ -1,12 +1,14 @@
 package com.canbe.board.repository
 
+import com.canbe.board.dto.CreatePostDto
 import com.canbe.board.dto.PostDto
 import com.canbe.board.dto.UpdatePostDto
 import com.canbe.board.entity.PostEntity
 import kotlinx.datetime.toKotlinLocalDateTime
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 import org.jetbrains.exposed.sql.deleteWhere
-import org.jetbrains.exposed.sql.select
+import org.jetbrains.exposed.sql.insert
+import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.update
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Repository
@@ -16,10 +18,23 @@ import org.springframework.transaction.annotation.Transactional
 @Transactional
 class PostRepository {
 
+    fun createPosts(posts: List<CreatePostDto>) {
+        posts.forEach { post ->
+            PostEntity.Posts.insert {
+                it[title] = post.title
+                it[content] = post.content
+                it[writer] = post.writer
+            }
+        }
+    }
+
     // TODO - Transactional 어노테이션 공부 필요 ... !
     // 해당 어노테이션 붙이니 exposed transaction { 문법이 필요 없어졌음 ... !
     fun findAllPosts(): List<PostDto> {
-        return PostEntity.Post.all().map { PostDto.postEntityToPostDto(it) }
+        val posts = PostEntity.Posts.selectAll().toList()
+        return PostDto.resultRowToTest(resultRows = posts)
+        // PostEntity.Posts.selectAll().map { post -> post. }
+        // return PostEntity.Post.all().map { PostDto.postEntityToPostDto(it) }
     }
 
     // TODO - !! 보다 더 좋은 방법이 있지 않을까 ... ?!
@@ -40,10 +55,10 @@ class PostRepository {
                 PostEntity.Posts.id eq postId
             },
         ) {
-            it[PostEntity.Posts.title] = post.title
-            it[PostEntity.Posts.content] = post.content
-            it[PostEntity.Posts.writer] = post.writer
-            it[PostEntity.Posts.updatedAt] = post.updatedAt.toKotlinLocalDateTime()
+            it[title] = post.title
+            it[content] = post.content
+            it[writer] = post.writer
+            it[updatedAt] = post.updatedAt.toKotlinLocalDateTime()
         }
     }
 
