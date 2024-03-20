@@ -3,7 +3,7 @@ package com.canbe.board.controller
 import com.canbe.board.dto.CreatePostDto
 import com.canbe.board.dto.PostDto
 import com.canbe.board.dto.UpdatePostDto
-import com.canbe.board.service.PostService
+import com.canbe.board.service.PostExposedService
 import com.canbe.board.util.ApiVersion
 import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus
@@ -18,44 +18,44 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping(ApiVersion.EXPOSED_FIRST_VERSION_API_PATH)
+@RequestMapping(ApiVersion.EXPOSED_FIRST_VERSION_API_PATH + "/posts")
 class PostExposedController(
-    private val postService: PostService,
+    private val postExposedService: PostExposedService,
 ) {
-    @PostMapping("/posts")
+    @PostMapping
     fun createPosts(
         @RequestBody posts: List<CreatePostDto>,
     ): ResponseEntity<Unit> {
-        postService.createPosts(posts = posts)
+        postExposedService.createPosts(posts = posts)
         return ResponseEntity(HttpStatus.CREATED)
     }
 
-    @GetMapping("/posts")
+    @GetMapping
     fun getPosts(): List<PostDto> {
-        return postService.getPosts()
+        return postExposedService.getPosts()
     }
 
-    @GetMapping("/posts/{postId}")
+    @GetMapping("/{postId}")
     fun getPostById(
         @PathVariable(name = "postId") postId: Int,
     ): PostDto {
-        return postService.getPostById(postId = postId)
+        return postExposedService.getPostById(postId = postId)
     }
 
-    @PatchMapping("/posts/{postId}")
+    @PatchMapping("/{postId}")
     fun updatePostByPostId(
         @PathVariable(name = "postId") postId: Int,
         @RequestBody post: UpdatePostDto,
     ): ResponseEntity<Unit> {
-        postService.updatePostByPostId(postId = postId, postDto = post)
+        postExposedService.updatePostByPostId(postId = postId, postDto = post)
         return ResponseEntity(HttpStatus.CREATED)
     }
 
-    @DeleteMapping("/posts/{postId}")
+    @DeleteMapping("/{postId}")
     fun deletePostByPostId(
         @PathVariable(name = "postId") postId: Int,
     ): ResponseEntity<Unit> {
-        postService.deletePostByPostId(postId = postId)
+        postExposedService.deletePostByPostId(postId = postId)
         return ResponseEntity(HttpStatus.ACCEPTED)
     }
 

@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 
 @Service
-class PostService(
+class PostExposedService(
     private val postExposedRepository: PostExposedRepository,
 ) {
     fun createPosts(posts: List<CreatePostDto>) {
@@ -36,6 +36,6 @@ class PostService(
     }
 
     companion object {
-        private val logger = LoggerFactory.getLogger(PostService::class.java)
+        private val logger = LoggerFactory.getLogger(PostExposedService::class.java)
     }
 }
