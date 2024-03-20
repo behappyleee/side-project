@@ -7,7 +7,7 @@ import jakarta.persistence.GenerationType
 import jakarta.persistence.Column
 import java.time.LocalDateTime
 
-@Entity
+@Entity(name = "post")
 data class JpaPostDto(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,4 +22,8 @@ data class JpaPostDto(
     val createdAt: LocalDateTime,
     @Column(name = "updated_at")
     val updatedAt: LocalDateTime
-)
+) {
+//    constructor() : this() {
+//
+//    }
+}

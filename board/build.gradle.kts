@@ -1,16 +1,22 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
+
 plugins {
     id("org.springframework.boot") version "3.2.3"
     id("io.spring.dependency-management") version "1.1.4"
+
     kotlin("jvm") version "1.9.22"
     kotlin("plugin.spring") version "1.9.22"
+    kotlin("plugin.jpa") version "1.9.22"
 }
+
+// apply { plugin("kotlin-jpa") }
+val exposedVersion: String by project
 
 group = "com.canbe"
 version = "0.0.1-SNAPSHOT"
 
-val exposedVersion: String by project
+
 
 java {
     sourceCompatibility = JavaVersion.VERSION_21
@@ -49,3 +55,10 @@ tasks.withType<KotlinCompile> {
 tasks.withType<Test> {
     useJUnitPlatform()
 }
+
+// build.gradle
+//apply plugin: "kotlin-noarg"
+//
+//noArg {
+//    annotation("jakarta.persistence.Enetity") // Java EE면 javax.persistence.Entity
+//}
