@@ -7,16 +7,19 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerA
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
-@Configuration
-@ImportAutoConfiguration(
-    value = [ExposedAutoConfiguration::class],
-    exclude = [DataSourceTransactionManagerAutoConfiguration::class]
-)
-class ExposedConfig {
-    @Bean
-    fun databaseConfig(): DatabaseConfig {
-        return DatabaseConfig {
-            useNestedTransactions = true
-        }
-    }
-}
+// 해당 Config 설정 자세히 공부하기 !
+// Transaction Manager / DataSource 차이점 알기 !!
+
+//@Configuration
+//@ImportAutoConfiguration(
+//    value = [ExposedAutoConfiguration::class],
+//    exclude = [DataSourceTransactionManagerAutoConfiguration::class]
+//)
+//class ExposedConfig {
+//    @Bean
+//    fun databaseConfig(): DatabaseConfig {
+//        return DatabaseConfig {
+//            useNestedTransactions = true
+//        }
+//    }
+//}

@@ -5,7 +5,7 @@ spring:
     name: board
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost/side-project?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
+    url: jdbc:mysql://localhost/side_project?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
     username: root
     password: 1234
     hikari:
