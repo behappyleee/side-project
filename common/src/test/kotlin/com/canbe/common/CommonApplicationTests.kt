@@ -8,6 +8,7 @@ class CommonApplicationTests {
 
     @Test
     fun contextLoads() {
+        println("Test !")
     }
 
 }
