@@ -41,6 +41,10 @@ dependencies {
     // JPA 사용하는데 필요한 Library
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
+    // https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0")
+
+
     runtimeOnly("com.mysql:mysql-connector-j")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }

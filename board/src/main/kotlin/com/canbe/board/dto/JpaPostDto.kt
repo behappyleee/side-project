@@ -22,8 +22,4 @@ data class JpaPostDto(
     val createdAt: LocalDateTime,
     @Column(name = "updated_at")
     val updatedAt: LocalDateTime
-) {
-//    constructor() : this() {
-//
-//    }
-}
+)

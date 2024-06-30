@@ -26,6 +26,8 @@ spring:
     hibernate:
       ddl-auto: none
     show-sql: true
+
+
 #maximum-pool-size: 최대 pool size (defailt 10)
 #connection-timeout: 커넥션의 타임아웃
 #validation-timeout: 유효한 타임아웃

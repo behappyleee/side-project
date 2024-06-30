@@ -15,7 +15,7 @@ import org.springframework.stereotype.Repository
 import org.springframework.transaction.annotation.Transactional
 
 @Repository
-@Transactional(value = "springTransactionManager")
+@Transactional(value = "exposedTransactionManager")
 class PostExposedRepository {
     fun createPosts(posts: List<CreatePostDto>) {
         posts.forEach { post ->
